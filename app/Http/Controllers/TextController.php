@@ -9,12 +9,13 @@ USE App\Models\Text;
 class TextController extends Controller
 {
     public function index() {
-        $data = Text::all();
+        $texts = Text::all();
 
+        $data = ["data" => $texts];
         $json = json_encode($data);
         $encrypted = $this->encrypt($json);
 
-        return response(["data" => $encrypted], 200);
+        return response($encrypted, 200);
     }
 
     public function store(Request $request) {
@@ -29,7 +30,11 @@ class TextController extends Controller
         $text->content = $decrypted;
         $text->save();
 
-        return response(["data" => $content], 200);
+        $data = ["data" => $text];
+        $json = json_encode($data);
+        $encrypted = $this->encrypt($json);
+
+        return response($encrypted, 200);
     }
 
     public function get_encrypyt(Request $request) 
