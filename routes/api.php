@@ -19,3 +19,4 @@ Route::get('/', [TextController::class, 'index']);
 Route::post('/store', [TextController::class, 'store']);
 Route::post('/encrypt', [TextController::class, 'get_encrypyt']);
 Route::post('/decrypt', [TextController::class, 'get_decrypyt']);
+// Route::get('/get_key', [TextController::class, 'get_key']);

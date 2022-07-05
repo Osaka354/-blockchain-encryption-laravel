@@ -18,7 +18,7 @@ class TextController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validator([
+        $request->validate([
             "content" => "required",
         ]);
 
@@ -34,22 +34,24 @@ class TextController extends Controller
 
     public function get_encrypyt(Request $request) 
     {
-        $request->validator([
+        $request->validate([
             "content" => "required",
         ]);
-        
-        $request->validator([
-            "content" => "required",
-        ]);
+
         return $this->encrypt($request->content);
     }
 
     public function get_decrypyt(Request $request) {
+        $request->validate([
+            "content" => "required",
+        ]);
+
         return $this->decrypt($request->content);
     }
 
     private function get_key() {
-        $key = pack("H*", "21312345FFDCE3432521FDCD");
+        // $key = pack("H*", "21312345FFDCE3432521FDCD");
+        $key = "21312345FFDCE3432521FDCD";
         return $key;
     }
 
