@@ -67,15 +67,15 @@ class DesController extends Controller
     private function encrypt($plain_text)
     {
         $cipher = openssl_encrypt($plain_text, "DES-ECB", $this->get_key());
-        $cipher_bash64 = base64_encode($cipher);
-        return $cipher_bash64;
+        // $cipher_bash64 = base64_encode($cipher);
+        return $cipher;
     }
 
     private function decrypt($cipher)
     {
-        $cipher_bash64 = '';
-        $cipher_bash64 = base64_decode($cipher);
-        $plain_text = openssl_decrypt($cipher_bash64, "DES-ECB", $this->get_key());
+        // $cipher_bash64 = '';
+        // $cipher_bash64 = base64_decode($cipher);
+        $plain_text = openssl_decrypt($cipher, "DES-ECB", $this->get_key());
         return $plain_text;
     }
 }
