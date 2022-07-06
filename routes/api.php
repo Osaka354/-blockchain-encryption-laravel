@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TextController;
+use App\Http\Controllers\DesController;
+use App\Http\Controllers\RsaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,9 @@ use App\Http\Controllers\TextController;
 |
 */
 
-Route::get('/', [TextController::class, 'index']);
-Route::post('/store', [TextController::class, 'store']);
-Route::post('/encrypt', [TextController::class, 'get_encrypyt']);
-Route::post('/decrypt', [TextController::class, 'get_decrypyt']);
-// Route::get('/get_key', [TextController::class, 'get_key']);
+Route::group(['prefix' => 'des'], function() {
+    Route::get('/', [DesController::class, 'index']);
+    Route::post('/store', [DesController::class, 'store']);
+    Route::post('/encrypt', [DesController::class, 'get_encrypyt']);
+    Route::post('/decrypt', [DesController::class, 'get_decrypyt']);
+});
