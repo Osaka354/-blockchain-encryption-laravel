@@ -10,9 +10,9 @@ class DesController extends Controller
 {
     public function index()
     {
-        $texts = Text::paginate(10);
+        $texts = Text::all();
 
-        $data = $texts;
+        $data = ["data" => $texts];
         $json = json_encode($data);
         $encrypted = $this->encrypt($json);
 
