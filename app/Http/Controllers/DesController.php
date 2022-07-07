@@ -12,7 +12,7 @@ class DesController extends Controller
     {
         $texts = Text::paginate(10);
 
-        $data = ["data" => $texts];
+        $data = $texts;
         $json = json_encode($data);
         $encrypted = $this->encrypt($json);
 
