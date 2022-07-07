@@ -10,7 +10,7 @@ class DesController extends Controller
 {
     public function index()
     {
-        $texts = Text::all();
+        $texts = Text::paginate(10);
 
         $data = ["data" => $texts];
         $json = json_encode($data);
