@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Text;
 
-class DesController extends Controller
+use App\Http\Controllers\EncrytionController;
+
+class DesController extends EncrytionController
 {
     public function index()
     {
@@ -55,27 +57,5 @@ class DesController extends Controller
         ]);
 
         return $this->decrypt($request->content);
-    }
-
-    private function get_key()
-    {
-        // $key = base64_encode("21312345FFDCE3432521FDCD");
-        $key = "21FAC121";
-        return $key;
-    }
-
-    private function encrypt($plain_text)
-    {
-        $cipher = openssl_encrypt($plain_text, "DES-ECB", $this->get_key());
-        // $cipher_bash64 = base64_encode($cipher);
-        return $cipher;
-    }
-
-    private function decrypt($cipher)
-    {
-        // $cipher_bash64 = '';
-        // $cipher_bash64 = base64_decode($cipher);
-        $plain_text = openssl_decrypt($cipher, "DES-ECB", $this->get_key());
-        return $plain_text;
     }
 }

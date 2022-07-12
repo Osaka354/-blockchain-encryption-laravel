@@ -22,3 +22,7 @@ Route::group(['prefix' => 'des'], function() {
     Route::post('/encrypt', [DesController::class, 'get_encrypyt']);
     Route::post('/decrypt', [DesController::class, 'get_decrypyt']);
 });
+
+Route::group(['prefix' => 'rsa'], function() {
+    Route::get('/generate_key', [RsaController::class, 'generate_key']);
+});
