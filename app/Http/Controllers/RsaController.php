@@ -32,6 +32,6 @@ class RsaController extends Controller
         // Decrypt the data using the private key and store the results in $decrypted
         openssl_private_decrypt($encrypted, $decrypted, $privKey);
 
-        return $decrypted;
+        return $privKey;
     }
 }
