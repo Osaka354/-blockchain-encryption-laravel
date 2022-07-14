@@ -33,7 +33,7 @@ class RsaController extends Controller
         $data = $request['content'];
         $priv = $this->get_private_key();
 
-        openssl_public_encrypt($data, $encrypted, $priv);
+        openssl_private_encrypt($data, $encrypted, $priv);
 
         $base64encoded = base64_encode($encrypted);
 
