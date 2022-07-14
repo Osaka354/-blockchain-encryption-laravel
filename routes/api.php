@@ -26,5 +26,6 @@ Route::group(['prefix' => 'des'], function() {
 Route::group(['prefix' => 'rsa'], function() {
     Route::get('/get_public_key', [RsaController::class, 'get_public_key']);
     Route::post('/encrypt', [RsaController::class, 'encrypt']);
+    Route::post('/encrypt_by_private', [RsaController::class, 'encrypt_by_private']);
     Route::post('/decrypt', [RsaController::class, 'decrypt']);
 });

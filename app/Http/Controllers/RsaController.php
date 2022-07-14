@@ -24,6 +24,22 @@ class RsaController extends Controller
         return response($base64encoded);
     }
 
+    public function encrypt_by_private(Request $request)
+    {
+        $request->validate([
+            'content' => 'required',
+        ]);
+
+        $data = $request['content'];
+        $priv = $this->get_private_key();
+
+        openssl_public_encrypt($data, $encrypted, $priv);
+
+        $base64encoded = base64_encode($encrypted);
+
+        return response($base64encoded);
+    }
+
     public function decrypt(Request $request)
     {
         $request->validate([
